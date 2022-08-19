@@ -1,0 +1,91 @@
+.haha__video__wrapper {
+  width: 100%;
+  position: relative;
+  font-size: 0;
+
+  &>video {
+    width: 100%;
+  }
+
+  .haha__control__wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .4);
+
+    .btn__wrapper {
+      cursor: pointer;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .3s all;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, .6);
+      }
+
+      &>img {
+        width: 80%;
+      }
+    }
+
+    .btn__play__wrapper {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+
+    .btn__time__wrapper {
+      font-size: 14px;
+      color: white;
+      margin-right: 6px;
+    }
+  }
+
+  .progress__bar {
+    position: absolute;
+    top: -6px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: #ccc;
+    transition: height .2s linear, top .2s linear;
+
+    &:hover {
+      top: -10px;
+      height: 10px;
+
+      & > .bar__dot {
+        width: 18px;
+        height: 18px;
+        top: -5px;
+      }
+
+    }
+  }
+
+  .progress_bar>.bar__bg {
+    width: 0px;
+    height: 100%;
+    background-color: rgb(250, 139, 12);
+  }
+
+  .progress_bar>.bar__dot {
+    position: absolute;
+    top: -2px;
+    left: 0px;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 20px;
+    transition: height .2s linear, top .2s linear, width .2s linear;
+  }
+
+}
