@@ -8,19 +8,28 @@
   <title>Document</title>
 </head>
 
+<link href="//vjs.zencdn.net/7.10.2/video-js.min.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/7.10.2/video.min.js"></script>
 <body>
   <div>
     <div id="video">
-      <video id="my-player-tet" class="video-js" controls preload="auto" data-setup='{}'>
-        <source src="http://img.hahabianli.com/buyvideo/20220813/090555_1160352754809978356_1.mp4" type="video/mp4">
-        </source>
+      <video id="my-player-tet" class="video-js" controls preload="auto">
       </video>
+      <!-- <video id="my-player-tet2" class="video-js" controls preload="auto">
+      </video> -->
     </div>
   </div>
 </body>
-<link href="//vjs.zencdn.net/7.10.2/video-js.min.css" rel="stylesheet">
-<script src="//vjs.zencdn.net/7.10.2/video.min.js"></script>
 <style>
+  #video {
+    width: 400px;
+  }
+
+  .video-js {
+    width: 100%;
+    padding-bottom: 75%;
+  }
+  
   .video-js .vjs-big-play-button {
     top: 50%;
     left: 50%;
@@ -33,51 +42,13 @@
     background-position: center;
   }
 </style>
-
 <script>
-  function initVideoJs(options) {
-    var id = options.id;
-    var MenuButton = videojs.getComponent('MenuButton')
-    var Menu = videojs.getComponent('Menu')
-    var MenuItem = videojs.getComponent('MenuItem')
-
-    var player = videojs(`${id}`, options, function onPlayerReady() {
-      videojs.log('Your player is ready!');
-    });
-    player.__custom = {
-      flag: false,
-    }
-
-    var myMenu = new Menu(player)
-    var item = new MenuItem(player, { label: `镜像画面(${player.__custom.flag ? '关' : '开'})` })
-    item.addClass('custom-menu-item-rotate')
-    item.on('click', (e) => {
-      player.__custom.flag = !player.__custom.flag;
-      document.querySelector(`#${id} .custom-menu-item-rotate`).innerHTML = `镜像画面(${player.__custom.flag ? '关' : '开'})`
-      document.querySelector(`#${id}_html5_api`).style.transform = `rotateY(${player.__custom.flag ? '180deg' : '0'})`
-    })
-    myMenu.addItem(item);
-
-    var menuInstance = new MenuButton(player)
-    menuInstance.addChild(myMenu)
-    menuInstance.addClass('custom-more')
-    player.controlBar.addChild(menuInstance, { title: '更多', name: 'custom' })
-  }
-
-  initVideoJs({
-    id: 'my-player-tet',
-    width: '400px',
-    height: '300px'
+  console.log(window.haha_compoments_video)
+  const { HahaVideo } = window.haha_compoments_video
+  new HahaVideo({
+    el: document.getElementById('video'),
+    src: 'http://img.hahabianli.com/buyvideo/20220813/090555_1160352754809978356_1.mp4',
   })
-</script>
-<script>
-
-  // console.log(window.haha_compoments_video)
-  // const { HahaVideo } = window.haha_compoments_video
-  // new HahaVideo({
-  //   el: document.getElementById('video'),
-  //   src: 'http://img.hahabianli.com/buyvideo/20220813/090555_1160352754809978356_1.mp4',
-  // })
 </script>
 
 </html>

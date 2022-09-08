@@ -95,7 +95,7 @@ export class HahaVideo {
     /** 视频加载完毕 */
     video.onloadedmetadata = () => {
       updateTime();
-      updateBar();
+      // updateBar();
       initClick();
     }
 
